@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "database": "json-graphql-server mock/database.js"
   },
   "dependencies": {
     "@apollo/client": "^3.2.9",
@@ -44,6 +45,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^25.1.0",
+    "json-graphql-server": "^2.1.3",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.2.1",
     "react-test-renderer": "16.13.1",
