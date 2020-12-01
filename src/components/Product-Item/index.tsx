@@ -17,7 +17,9 @@ const ProductItem: React.FC<ProductItemProps> = ({
 }) => {
   return (
     <S.Container>
-      <S.Image source={{ uri: imageUrl }} />
+      <S.ImageContainer>
+        <S.Image source={{ uri: imageUrl }} resizeMode="contain" />
+      </S.ImageContainer>
       <S.Wrapper>
         <S.Title type="secondary">{name}</S.Title>
         <S.PriceContainer>

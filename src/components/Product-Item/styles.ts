@@ -10,20 +10,27 @@ export const Container = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const Image = styled.Image`
+export const ImageContainer = styled.View`
   width: 50px;
   height: 50px;
   margin-right: 16px;
+  border: 1px solid #dfe3e8;
+  padding: 2px;
   align-self: flex-start;
+`;
+
+export const Image = styled.Image`
+  flex: 1;
+`;
+
+export const Wrapper = styled.View`
+  flex: 1;
+  max-width: 220px;
 `;
 
 export const Title = styled(TitleComponent)`
   align-self: flex-start;
   margin-bottom: 8px;
-`;
-
-export const Wrapper = styled.View`
-  flex: 1;
 `;
 
 export const PriceContainer = styled.View`
