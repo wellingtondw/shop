@@ -3,9 +3,11 @@ export default {
     radius: '2px',
   },
   font: {
-    normal: 'Rubik-Regular',
-    medium: 'Rubik-Medium',
-    bold: 'Rubik-Bold',
+    family: {
+      normal: 'Rubik-Regular',
+      medium: 'Rubik-Medium',
+      bold: 'Rubik-Bold',
+    },
     sizes: {
       normal: '15px',
       medium: '20px',
