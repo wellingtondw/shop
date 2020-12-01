@@ -1,22 +1,26 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Text } from '../../styles/common';
 import TitleComponent from '../Title';
 
 export const Container = styled.TouchableOpacity`
-  border-color: #dfe3e8;
-  border-bottom-width: 1px;
-  flex-direction: row;
-  padding: 16px 0;
-  align-items: center;
+  ${({ theme }) => css`
+    border-color: ${theme.colors.gray};
+    border-bottom-width: 1px;
+    flex-direction: row;
+    padding: ${theme.spacings.medium} 0;
+    align-items: center;
+  `}
 `;
 
 export const ImageContainer = styled.View`
-  width: 50px;
-  height: 50px;
-  margin-right: 16px;
-  border: 1px solid #dfe3e8;
-  padding: 2px;
-  align-self: flex-start;
+  ${({ theme }) => css`
+    width: 50px;
+    height: 50px;
+    margin-right: ${theme.spacings.medium};
+    border: 1px solid ${theme.colors.gray};
+    padding: ${theme.spacings.xxsmall};
+    align-self: flex-start;
+  `}
 `;
 
 export const Image = styled.Image`
@@ -29,8 +33,10 @@ export const Wrapper = styled.View`
 `;
 
 export const Title = styled(TitleComponent)`
-  align-self: flex-start;
-  margin-bottom: 8px;
+  ${({ theme }) => css`
+    align-self: flex-start;
+    margin-bottom: ${theme.spacings.small};
+  `}
 `;
 
 export const PriceContainer = styled.View`
@@ -38,16 +44,22 @@ export const PriceContainer = styled.View`
 `;
 
 export const NumberOfInstallments = styled(Text)`
-  margin-right: 4px;
-  font-size: 13px;
+  ${({ theme }) => css`
+    margin-right: ${theme.spacings.xsmall};
+    font-size: ${theme.font.sizes.normal};
+  `}
 `;
 
 export const PromotionalPrice = styled(NumberOfInstallments)`
-  margin-right: 4px;
-  color: #637381;
-  text-decoration: line-through;
+  ${({ theme }) => css`
+    margin-right: ${theme.spacings.xsmall};
+    color: ${theme.colors.secondary};
+    text-decoration: line-through;
+  `}
 `;
 
 export const Price = styled(NumberOfInstallments)`
-  margin-right: 4px;
+  ${({ theme }) => css`
+    margin-right: ${theme.spacings.xsmall};
+  `}
 `;

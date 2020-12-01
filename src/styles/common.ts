@@ -1,13 +1,17 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 export const Container = styled.ScrollView`
-  flex: 1;
-  padding: 0 16px;
+  ${({ theme }) => css`
+    flex: 1;
+    padding: 0 ${theme.spacings.medium};
+  `}
 `;
 
 export const Text = styled.Text`
-  font-family: 'Rubik-Regular';
-  font-size: 15px;
-  line-height: 20px;
-  color: #333;
+  ${({ theme }) => css`
+    font-family: ${theme.font.family.normal};
+    font-size: ${theme.font.sizes.normal};
+    line-height: ${theme.font.lineHeights.normal};
+    color: ${theme.colors.primary};
+  `}
 `;

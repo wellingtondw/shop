@@ -1,6 +1,8 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import TitleComponent from '../../components/Title';
 
 export const Title = styled(TitleComponent)`
-  margin: 40px 0 30px;
+  ${({ theme }) => css`
+    margin: ${theme.spacings.xxlarge} 0 ${theme.spacings.xlarge};
+  `}
 `;
