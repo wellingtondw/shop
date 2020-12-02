@@ -1,5 +1,6 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
+import { RouteProp } from '@react-navigation/native';
 
 import { Text } from 'react-native';
 import { Container } from '../../styles/common';
@@ -18,7 +19,15 @@ const GET_SKU = gql`
   }
 `;
 
-const ProductDetails: React.FC = ({ route }) => {
+type RootStackParamList = {
+  ProductDetails: { id: number };
+};
+
+export type ProductDetailsProps = {
+  route: RouteProp<RootStackParamList, 'ProductDetails'>;
+};
+
+const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
   const { id } = route.params;
   const { loading, error, data } = useQuery(GET_SKU, {
     variables: { id },
