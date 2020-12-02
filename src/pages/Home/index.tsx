@@ -28,7 +28,6 @@ const Home: React.FC = () => {
   return (
     <Container>
       <S.Title>Produtos</S.Title>
-
       <ProductList data={data.allSkus} />
     </Container>
   );

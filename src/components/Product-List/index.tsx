@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ListRenderItem } from 'react-native';
+import { FlatList, ListRenderItem, TouchableOpacityProps } from 'react-native';
 import * as S from './styles';
 import ProductItem, { ProductItemProps } from '../Product-Item';
 

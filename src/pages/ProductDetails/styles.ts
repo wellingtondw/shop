@@ -3,6 +3,6 @@ import TitleComponent from '../../components/Title';
 
 export const Title = styled(TitleComponent)`
   ${({ theme }) => css`
-    margin: ${theme.spacings.medium} 0 ${theme.spacings.large};
+    margin: ${theme.spacings.xxlarge} 0 ${theme.spacings.xlarge};
   `}
 `;

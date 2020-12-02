@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+
 import * as S from './styles';
 
 export type ProductItemProps = {
@@ -10,13 +12,20 @@ export type ProductItemProps = {
 };
 
 const ProductItem: React.FC<ProductItemProps> = ({
+  id,
   imageUrl,
   name,
   salePrice,
   promotionalPrice,
+  ...rest
 }) => {
+  const navigation = useNavigation();
+
   return (
-    <S.Container>
+    <S.Container
+      {...rest}
+      onPress={() => navigation.navigate('ProductDetails', { id })}
+    >
       <S.ImageContainer>
         <S.Image source={{ uri: imageUrl }} resizeMode="contain" />
       </S.ImageContainer>
