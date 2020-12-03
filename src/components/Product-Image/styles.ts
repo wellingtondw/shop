@@ -16,7 +16,7 @@ interface ImageContainerType extends ProductImageProps {
   hasImage: boolean;
 }
 
-export const ImageContainer = styled.View<ImageContainerType>`
+export const ImageContainer = styled.View<Omit<ImageContainerType, 'source'>>`
   ${({ theme, withBorder, hasImage }) => css`
     ${hasImage &&
     css`
