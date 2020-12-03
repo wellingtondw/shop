@@ -12,8 +12,26 @@ const imageModifiers = {
   `,
 };
 
+interface ImageContainerType extends ProductImageProps {
+  hasImage: boolean;
+}
+
+export const ImageContainer = styled.View<ImageContainerType>`
+  ${({ theme, withBorder, hasImage }) => css`
+    ${hasImage &&
+    css`
+      padding: 2px;
+    `}
+
+    ${withBorder &&
+    css`
+      border: 1px solid ${theme.colors.gray};
+    `}
+  `}
+`;
+
 export const Image = styled.Image<ProductImageProps>`
   ${({ size }) => css`
-    ${size && imageModifiers[size]}
+    ${size && imageModifiers[size]};
   `}
 `;
