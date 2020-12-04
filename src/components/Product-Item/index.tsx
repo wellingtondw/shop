@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import ProductImage from '../Product-Image';
 
 import * as S from './styles';
 
@@ -27,7 +28,11 @@ const ProductItem: React.FC<ProductItemProps> = ({
       onPress={() => navigation.navigate('ProductDetails', { id })}
     >
       <S.ImageContainer>
-        <S.Image source={{ uri: imageUrl }} resizeMode="contain" />
+        <ProductImage
+          withBorder
+          source={{ uri: imageUrl }}
+          resizeMode="contain"
+        />
       </S.ImageContainer>
       <S.Wrapper>
         <S.Title type="secondary">{name}</S.Title>

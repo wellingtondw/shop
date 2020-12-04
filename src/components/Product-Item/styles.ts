@@ -14,17 +14,10 @@ export const Container = styled.TouchableOpacity`
 
 export const ImageContainer = styled.View`
   ${({ theme }) => css`
-    width: 50px;
-    height: 50px;
     margin-right: ${theme.spacings.medium};
-    border: 1px solid ${theme.colors.gray};
     padding: ${theme.spacings.xxsmall};
     align-self: flex-start;
   `}
-`;
-
-export const Image = styled.Image`
-  flex: 1;
 `;
 
 export const Wrapper = styled.View`

@@ -12,7 +12,7 @@ const textInputModifiers = {
 };
 
 export const Container = styled.View`
-  width: 100%;
+  flex: 1;
 `;
 
 export const Label = styled(Text)`
