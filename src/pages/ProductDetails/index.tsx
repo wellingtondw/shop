@@ -3,8 +3,15 @@ import { gql, useQuery } from '@apollo/client';
 import { RouteProp } from '@react-navigation/native';
 
 import { Text } from 'react-native';
+
+import { ScrollView } from 'react-native-gesture-handler';
 import { Container } from '../../styles/common';
+
+import ProductImage from '../../components/Product-Image';
+import Input from '../../components/Input';
 import Header from '../../components/Header';
+import Button from '../../components/Button';
+import IconButton from '../../components/Icon-Button';
 import * as S from './styles';
 
 const GET_SKU = gql`
@@ -27,6 +34,8 @@ export type ProductDetailsProps = {
   route: RouteProp<RootStackParamList, 'ProductDetails'>;
 };
 
+const gradientColors = ['#FFFFFF', '#F9FAFB', '#FFFFFF'];
+
 const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
   const { id } = route.params;
   const { loading, error, data } = useQuery(GET_SKU, {
@@ -36,15 +45,57 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>{error}</Text>;
 
-  const { name } = data.Sku;
+  const { name, imageUrl } = data.Sku;
 
   return (
-    <>
+    <ScrollView style={{ flexGrow: 1 }}>
       <Header title="Produtos" />
       <Container>
         <S.Title>{name}</S.Title>
+
+        <S.ImageContainer>
+          <ProductImage
+            size="large"
+            source={{ uri: imageUrl }}
+            resizeMode="cover"
+          />
+        </S.ImageContainer>
+
+        <S.RowContainer>
+          <Input label="Estoque" />
+          <S.ButtonWrapper>
+            <S.LinearGradient colors={gradientColors}>
+              <IconButton name="minus" size={12} color="#BF1D08" />
+            </S.LinearGradient>
+            <S.LinearGradient colors={gradientColors}>
+              <IconButton
+                name="plus"
+                size={12}
+                color="#1C9956"
+                style={{ borderLeftWidth: 0 }}
+              />
+            </S.LinearGradient>
+          </S.ButtonWrapper>
+        </S.RowContainer>
+
+        <S.RowContainer style={{ marginTop: 20 }}>
+          <S.InputContainer>
+            <Input type="secondary" label="Preço promocional" />
+          </S.InputContainer>
+          <S.InputContainer>
+            <Input type="secondary" label="Estoque" />
+          </S.InputContainer>
+        </S.RowContainer>
+
+        <S.SaveContainer>
+          <Button
+            type="success"
+            text="Salvar alterações"
+            onPress={() => console.log('Ok')}
+          />
+        </S.SaveContainer>
       </Container>
-    </>
+    </ScrollView>
   );
 };
 

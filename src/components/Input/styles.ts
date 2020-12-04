@@ -24,7 +24,7 @@ export const Label = styled(Text)`
 export const TextInput = styled.TextInput<Omit<InputProps, 'label'>>`
   ${({ theme, type }) => css`
     width: 100%;
-    height: 46px;
+    height: 36px;
     border: 1px solid ${theme.colors.gray};
     padding: ${theme.spacings.small} ${theme.spacings.medium};
     font-family: ${theme.font.family.normal};

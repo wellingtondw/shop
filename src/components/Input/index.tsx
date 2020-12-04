@@ -6,11 +6,18 @@ export type InputProps = {
   label: string;
 };
 
-const Input: React.FC<InputProps> = ({ children, type = 'primary', label }) => {
+const Input: React.FC<InputProps> = ({
+  children,
+  type = 'primary',
+  label,
+  ...rest
+}) => {
   return (
     <S.Container>
       {label && <S.Label>{label}</S.Label>}
-      <S.TextInput type={type}>{children}</S.TextInput>
+      <S.TextInput type={type} {...rest}>
+        {children}
+      </S.TextInput>
     </S.Container>
   );
 };
