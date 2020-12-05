@@ -13,9 +13,9 @@ const types = {
 };
 
 export const Title = styled.Text<TitleProps>`
-  ${({ type }) => css`
-    font-family: 'Rubik-Regular';
+  ${({ type, theme }) => css`
+    font-family: ${theme.font.family.normal};
     ${type ? types[type] : types.primary}
-    color: #333;
+    color: ${theme.colors.primary};
   `}
 `;

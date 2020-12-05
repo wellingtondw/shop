@@ -8,7 +8,11 @@ export interface TitleProps extends TextProps {
 }
 
 const Title: React.FC<TitleProps> = ({ children, ...rest }) => {
-  return <S.Title {...rest}>{children}</S.Title>;
+  return (
+    <S.Title {...rest} numberOfLines={2}>
+      {children}
+    </S.Title>
+  );
 };
 
 export default Title;

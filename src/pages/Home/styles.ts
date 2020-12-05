@@ -1,7 +1,8 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+import TitleComponent from '../../components/Title';
 
-export const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
+export const Title = styled(TitleComponent)`
+  ${({ theme }) => css`
+    margin: ${theme.spacings.medium} 0 ${theme.spacings.large};
+  `}
 `;
