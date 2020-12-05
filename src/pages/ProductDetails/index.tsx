@@ -94,7 +94,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
       <ProductSpecificationList
         data={productSpecificationData()}
         ListHeaderComponent={() => (
-          <>
+          <S.HeaderContainer>
             <S.Title>{name}</S.Title>
 
             <S.ImageContainer>
@@ -130,16 +130,16 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
                 <Input type="secondary" label="Estoque" />
               </S.InputContainer>
             </S.RowContainer>
-          </>
+          </S.HeaderContainer>
         )}
         ListFooterComponent={() => (
-          <S.SaveContainer>
+          <S.FooterContainer>
             <Button
               type="success"
               text="Salvar alterações"
               onPress={() => console.log('Ok')}
             />
-          </S.SaveContainer>
+          </S.FooterContainer>
         )}
         showsVerticalScrollIndicator={false}
       />

@@ -1,14 +1,22 @@
 import styled, { css } from 'styled-components/native';
 import { Text } from '../../styles/common';
 
-export const Container = styled.View`
-  ${({ theme }) => css`
+type Container = {
+  lastChild: boolean;
+};
+
+export const Container = styled.View<Container>`
+  ${({ theme, lastChild }) => css`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom-width: 1px;
-    border-color: ${theme.colors.gray};
     padding: 12px 8px 12px 0;
+
+    ${!lastChild &&
+    css`
+      border-bottom-width: 1px;
+      border-color: ${theme.colors.gray};
+    `}
   `}
 `;
 

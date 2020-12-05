@@ -15,8 +15,14 @@ const ProductSpecificationList: React.FC<
 > = ({ data, ...rest }) => {
   const renderProductSpecification: ListRenderItem<ProductSpecificationProps> = ({
     item: productSpecification,
+    index,
   }) => {
-    return <ProductSpecification {...productSpecification} />;
+    return (
+      <ProductSpecification
+        {...productSpecification}
+        lastChild={data.length - 1 === index}
+      />
+    );
   };
 
   return (

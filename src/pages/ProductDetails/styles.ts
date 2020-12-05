@@ -2,6 +2,12 @@ import styled, { css } from 'styled-components/native';
 import LinearG from 'react-native-linear-gradient';
 import TitleComponent from '../../components/Title';
 
+export const HeaderContainer = styled.View`
+  ${({ theme }) => css`
+    margin-bottom: ${theme.spacings.large};
+  `}
+`;
+
 export const Title = styled(TitleComponent)`
   ${({ theme }) => css`
     margin: ${theme.spacings.xxlarge} 0 ${theme.spacings.large};
@@ -36,13 +42,13 @@ export const InputContainer = styled.View`
   width: 48%;
 `;
 
-export const SaveContainer = styled.View`
+export const FooterContainer = styled.View`
   ${({ theme }) => css`
     border-top-width: 1px;
     padding-top: ${theme.spacings.small};
     border-color: ${theme.colors.gray};
     align-items: flex-end;
-    margin-top: ${theme.spacings.small};
+    margin-top: ${theme.spacings.xxlarge};
     margin-bottom: ${theme.spacings.small};
   `}
 `;

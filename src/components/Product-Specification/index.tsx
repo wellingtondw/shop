@@ -7,16 +7,18 @@ export type ProductSpecificationProps = {
   label: string;
   unitOfMeasurement: string;
   value: string | number;
+  lastChild?: boolean;
 };
 
 const ProductSpecification: React.FC<ProductSpecificationProps> = ({
   label,
   unitOfMeasurement,
   value,
+  lastChild,
   ...rest
 }) => {
   return (
-    <S.Container {...rest}>
+    <S.Container {...rest} lastChild={lastChild}>
       <S.Label>{label}</S.Label>
       <S.RightContainer>
         <S.InputContainer>
