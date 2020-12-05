@@ -43,5 +43,6 @@ export const SaveContainer = styled.View`
     border-color: ${theme.colors.gray};
     align-items: flex-end;
     margin-top: ${theme.spacings.small};
+    margin-bottom: ${theme.spacings.small};
   `}
 `;

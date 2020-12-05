@@ -1,13 +1,16 @@
 import React from 'react';
-import { FlatList, ListRenderItem, TouchableOpacityProps } from 'react-native';
+import { FlatList, FlatListProps, ListRenderItem } from 'react-native';
 import * as S from './styles';
 import ProductItem, { ProductItemProps } from '../Product-Item';
 
-export type ProductListProps = {
+export interface ProductListProps extends FlatListProps<ProductItemProps> {
   data: ProductItemProps[];
-};
+}
 
-const ProductList: React.FC<ProductListProps> = ({ data }) => {
+const ProductList: React.FC<Omit<ProductListProps, 'renderItem'>> = ({
+  data,
+  ...rest
+}) => {
   const renderProductItem: ListRenderItem<ProductItemProps> = ({
     item: product,
   }) => {
@@ -20,6 +23,7 @@ const ProductList: React.FC<ProductListProps> = ({ data }) => {
         data={data}
         keyExtractor={product => product.id}
         renderItem={renderProductItem}
+        {...rest}
       />
     </S.Container>
   );

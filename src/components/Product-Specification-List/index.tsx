@@ -1,17 +1,18 @@
 import React from 'react';
-import { FlatList, ListRenderItem } from 'react-native';
+import { FlatList, FlatListProps, ListRenderItem } from 'react-native';
 import * as S from './styles';
 import ProductSpecification, {
   ProductSpecificationProps,
 } from '../Product-Specification';
 
-export type ProductSpecificationListProps = {
+export interface ProductSpecificationListProps
+  extends FlatListProps<ProductSpecificationProps> {
   data: ProductSpecificationProps[];
-};
+}
 
-const ProductSpecificationList: React.FC<ProductSpecificationListProps> = ({
-  data,
-}) => {
+const ProductSpecificationList: React.FC<
+  Omit<ProductSpecificationListProps, 'renderItem'>
+> = ({ data, ...rest }) => {
   const renderProductSpecification: ListRenderItem<ProductSpecificationProps> = ({
     item: productSpecification,
   }) => {
@@ -24,6 +25,7 @@ const ProductSpecificationList: React.FC<ProductSpecificationListProps> = ({
         data={data}
         keyExtractor={productSpecification => productSpecification.label}
         renderItem={renderProductSpecification}
+        {...rest}
       />
     </S.Container>
   );
