@@ -7,6 +7,12 @@ export const Container = styled.View`
   `}
 `;
 
+export const CentralizeView = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Text = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.font.family.normal};
