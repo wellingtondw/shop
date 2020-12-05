@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { RouteProp } from '@react-navigation/native';
 
@@ -12,6 +12,7 @@ import Input from '../../components/Input';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import IconButton from '../../components/Icon-Button';
+import ProductSpecificationList from '../../components/Product-Specification-List';
 import * as S from './styles';
 
 const GET_SKU = gql`
@@ -22,9 +23,26 @@ const GET_SKU = gql`
       imageUrl
       salePrice
       promotionalPrice
+      package
     }
   }
 `;
+
+export type SkuDataProps = {
+  Sku: {
+    id: string;
+    name: string;
+    imageUrl: string;
+    salePrice: number;
+    promotionalPrice: number;
+    package: {
+      width: number;
+      height: number;
+      depth: number;
+      weight: number;
+    };
+  };
+};
 
 type RootStackParamList = {
   ProductDetails: { id: number };
@@ -45,7 +63,33 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>{error}</Text>;
 
-  const { name, imageUrl } = data.Sku;
+  const { name, imageUrl, package: packageData } = data?.Sku;
+  const { width, height, depth, weight } = packageData;
+
+  const productSpecificationData = () => {
+    return [
+      {
+        label: 'Peso',
+        value: weight,
+        unitOfMeasurement: 'kg',
+      },
+      {
+        label: 'Altura',
+        value: height,
+        unitOfMeasurement: 'cm',
+      },
+      {
+        label: 'Largura',
+        value: width,
+        unitOfMeasurement: 'cm',
+      },
+      {
+        label: 'Profundidade',
+        value: depth,
+        unitOfMeasurement: 'cm',
+      },
+    ];
+  };
 
   return (
     <ScrollView style={{ flexGrow: 1 }}>
@@ -86,6 +130,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
             <Input type="secondary" label="Estoque" />
           </S.InputContainer>
         </S.RowContainer>
+
+        <ProductSpecificationList data={productSpecificationData()} />
 
         <S.SaveContainer>
           <Button

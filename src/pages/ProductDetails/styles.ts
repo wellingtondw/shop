@@ -38,6 +38,9 @@ export const InputContainer = styled.View`
 
 export const SaveContainer = styled.View`
   ${({ theme }) => css`
+    border-top-width: 1px;
+    padding-top: ${theme.spacings.small};
+    border-color: ${theme.colors.gray};
     align-items: flex-end;
     margin-top: ${theme.spacings.small};
   `}
