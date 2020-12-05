@@ -9,11 +9,11 @@ export type HeaderProps = {
   title: string;
 };
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
+const Header: React.FC<HeaderProps> = ({ title, ...rest }) => {
   const navigation = useNavigation();
 
   return (
-    <S.Container>
+    <S.Container {...rest}>
       <BackButton onPress={() => navigation.goBack()} />
       <S.Title type="secondary">{title}</S.Title>
     </S.Container>

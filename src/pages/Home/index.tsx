@@ -30,6 +30,7 @@ const Home: React.FC = () => {
       <ProductList
         ListHeaderComponent={<S.Title>Produtos</S.Title>}
         data={data.allSkus}
+        showsVerticalScrollIndicator={false}
       />
     </Container>
   );

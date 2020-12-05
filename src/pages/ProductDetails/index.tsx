@@ -4,8 +4,6 @@ import { RouteProp } from '@react-navigation/native';
 
 import { Text } from 'react-native';
 
-import { Container } from '../../styles/common';
-
 import ProductImage from '../../components/Product-Image';
 import Input from '../../components/Input';
 import Header from '../../components/Header';
@@ -91,50 +89,50 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
   };
 
   return (
-    <ProductSpecificationList
-      data={productSpecificationData()}
-      ListHeaderComponent={() => (
-        <Container>
-          <Header title="Produtos" />
-          <S.Title>{name}</S.Title>
+    <>
+      <Header title="Produtos" />
+      <ProductSpecificationList
+        data={productSpecificationData()}
+        ListHeaderComponent={() => (
+          <>
+            <S.Title>{name}</S.Title>
 
-          <S.ImageContainer>
-            <ProductImage
-              size="large"
-              source={{ uri: imageUrl }}
-              resizeMode="cover"
-            />
-          </S.ImageContainer>
+            <S.ImageContainer>
+              <ProductImage
+                size="large"
+                source={{ uri: imageUrl }}
+                resizeMode="cover"
+              />
+            </S.ImageContainer>
 
-          <S.RowContainer>
-            <Input label="Estoque" />
-            <S.ButtonWrapper>
-              <S.LinearGradient colors={gradientColors}>
-                <IconButton name="minus" size={12} color="#BF1D08" />
-              </S.LinearGradient>
-              <S.LinearGradient colors={gradientColors}>
-                <IconButton
-                  name="plus"
-                  size={12}
-                  color="#1C9956"
-                  style={{ borderLeftWidth: 0 }}
-                />
-              </S.LinearGradient>
-            </S.ButtonWrapper>
-          </S.RowContainer>
+            <S.RowContainer>
+              <Input label="Estoque" />
+              <S.ButtonWrapper>
+                <S.LinearGradient colors={gradientColors}>
+                  <IconButton name="minus" size={12} color="#BF1D08" />
+                </S.LinearGradient>
+                <S.LinearGradient colors={gradientColors}>
+                  <IconButton
+                    name="plus"
+                    size={12}
+                    color="#1C9956"
+                    style={{ borderLeftWidth: 0 }}
+                  />
+                </S.LinearGradient>
+              </S.ButtonWrapper>
+            </S.RowContainer>
 
-          <S.RowContainer style={{ marginTop: 20 }}>
-            <S.InputContainer>
-              <Input type="secondary" label="Preço promocional" />
-            </S.InputContainer>
-            <S.InputContainer>
-              <Input type="secondary" label="Estoque" />
-            </S.InputContainer>
-          </S.RowContainer>
-        </Container>
-      )}
-      ListFooterComponent={() => (
-        <Container>
+            <S.RowContainer style={{ marginTop: 20 }}>
+              <S.InputContainer>
+                <Input type="secondary" label="Preço promocional" />
+              </S.InputContainer>
+              <S.InputContainer>
+                <Input type="secondary" label="Estoque" />
+              </S.InputContainer>
+            </S.RowContainer>
+          </>
+        )}
+        ListFooterComponent={() => (
           <S.SaveContainer>
             <Button
               type="success"
@@ -142,9 +140,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
               onPress={() => console.log('Ok')}
             />
           </S.SaveContainer>
-        </Container>
-      )}
-    />
+        )}
+        showsVerticalScrollIndicator={false}
+      />
+    </>
   );
 };
 
