@@ -132,6 +132,22 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
     });
   };
 
+  const handleIncreaseQuantity = () => {
+    setProductDetailsData({
+      ...productDetailsData,
+      quantity: Number(productDetailsData.quantity) + 1,
+    });
+  };
+
+  const handleDecreaseQuantity = () => {
+    if (productDetailsData.quantity > 0) {
+      setProductDetailsData({
+        ...productDetailsData,
+        quantity: Number(productDetailsData.quantity) - 1,
+      });
+    }
+  };
+
   const handleSave = async () => {
     const {
       package: packageData,
@@ -232,7 +248,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
         />
         <S.ButtonWrapper>
           <S.LinearGradient colors={gradientColors}>
-            <IconButton name="minus" size={12} color="#BF1D08" />
+            <IconButton
+              name="minus"
+              size={12}
+              color="#BF1D08"
+              onPress={handleDecreaseQuantity}
+            />
           </S.LinearGradient>
           <S.LinearGradient colors={gradientColors}>
             <IconButton
@@ -240,6 +261,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
               size={12}
               color="#1C9956"
               style={{ borderLeftWidth: 0 }}
+              onPress={handleIncreaseQuantity}
             />
           </S.LinearGradient>
         </S.ButtonWrapper>
