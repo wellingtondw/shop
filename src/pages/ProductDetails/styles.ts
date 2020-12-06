@@ -5,6 +5,7 @@ import TitleComponent from '../../components/Title';
 export const HeaderContainer = styled.View`
   ${({ theme }) => css`
     margin-bottom: ${theme.spacings.large};
+    padding: 0 ${theme.spacings.medium};
   `}
 `;
 
@@ -50,5 +51,6 @@ export const FooterContainer = styled.View`
     align-items: flex-end;
     margin-top: ${theme.spacings.xxlarge};
     margin-bottom: ${theme.spacings.small};
+    padding-right: ${theme.spacings.medium};
   `}
 `;
