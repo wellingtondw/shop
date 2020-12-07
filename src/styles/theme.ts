@@ -23,6 +23,7 @@ export default {
     gray: '#DFE3E8',
     green: '#1C9956',
     red: '#BF1D08',
+    white: '#FFFFFF',
   },
   spacings: {
     xxsmall: '2px',
