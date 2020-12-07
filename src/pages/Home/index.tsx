@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { ActivityIndicator, Text, Alert } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
 import ProductList from '../../components/Product-List';
 import { CentralizeView, Container } from '../../styles/common';
 
