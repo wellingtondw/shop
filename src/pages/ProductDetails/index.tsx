@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { ADD_PRODUCT_DETAILS } from '../../graphql/mutations';
 import { GET_SKU } from '../../graphql/queries';
+import convertValueIntoRealCurrency from '../../utils/convertValueIntoRealCurrency';
 
 import ProductImage from '../../components/Product-Image';
 import Input from '../../components/Input';
@@ -20,6 +21,7 @@ import ProductSpecification, {
   ProductSpecificationProps,
 } from '../../components/Product-Specification';
 import { CentralizeView, Container } from '../../styles/common';
+import onlyNumbersInTheString from '../../utils/onlyNumbersInTheString';
 
 export type HandleInputChangeProps = {
   text: string;
@@ -38,8 +40,8 @@ export type ProductDetailsDataProps = {
   id: number | null;
   name: string;
   imageUrl: string;
-  salePrice: number;
-  promotionalPrice: number;
+  salePrice: string;
+  promotionalPrice: string;
   quantity: number;
   package: {
     width: number;
@@ -66,8 +68,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
     id: null,
     name: '',
     imageUrl: '',
-    salePrice: 0,
-    promotionalPrice: 0,
+    salePrice: '0',
+    promotionalPrice: '0',
     quantity: 0,
     package: {
       width: 0,
@@ -134,8 +136,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
             depth,
             weight,
           },
-          salePrice: Number(salePrice),
-          promotionalPrice: Number(promotionalPrice),
+          salePrice: onlyNumbersInTheString(String(salePrice)),
+          promotionalPrice: onlyNumbersInTheString(String(promotionalPrice)),
           quantity: Number(quantity),
         },
       });
@@ -239,7 +241,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
           <Input
             type="secondary"
             label="Preço de venda"
-            value={String(salePrice)}
+            value={`R$ ${convertValueIntoRealCurrency(salePrice)}`}
             onChangeText={text => {
               handleInputChange({ text, field: 'salePrice' });
             }}
@@ -250,7 +252,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
           <Input
             type="secondary"
             label="Preço promocional"
-            value={String(promotionalPrice)}
+            value={`R$ ${convertValueIntoRealCurrency(promotionalPrice)}`}
             onChangeText={text => {
               handleInputChange({ text, field: 'promotionalPrice' });
             }}
