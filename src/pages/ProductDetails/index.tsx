@@ -6,6 +6,7 @@ import {
   ListRenderItem,
   ActivityIndicator,
   Alert,
+  SafeAreaView,
 } from 'react-native';
 import { ADD_PRODUCT_DETAILS } from '../../graphql/mutations';
 import { GET_SKU } from '../../graphql/queries';
@@ -279,7 +280,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
   };
 
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <Header title="Produtos" />
       <FlatList
         data={productSpecificationData}
@@ -298,7 +299,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
         showsVerticalScrollIndicator={false}
         removeClippedSubviews={false}
       />
-    </>
+    </SafeAreaView>
   );
 };
 

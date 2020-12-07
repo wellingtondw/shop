@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { ActivityIndicator, Alert } from 'react-native';
+import { ActivityIndicator, Alert, SafeAreaView } from 'react-native';
 import ProductList from '../../components/Product-List';
 import { CentralizeView, Container } from '../../styles/common';
 
@@ -79,26 +79,28 @@ const Home: React.FC = () => {
   }
 
   return (
-    <Container>
-      <ProductList
-        ListHeaderComponent={<S.Title>Produtos</S.Title>}
-        data={productsList.data}
-        showsVerticalScrollIndicator={false}
-        onEndReachedThreshold={0.1}
-        onEndReached={loadPage}
-        ListFooterComponent={() => (
-          <>
-            {productsList.loading && (
-              <ActivityIndicator
-                size="small"
-                color="#1C9956"
-                style={{ marginTop: 12 }}
-              />
-            )}
-          </>
-        )}
-      />
-    </Container>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Container>
+        <ProductList
+          ListHeaderComponent={<S.Title>Produtos</S.Title>}
+          data={productsList.data}
+          showsVerticalScrollIndicator={false}
+          onEndReachedThreshold={0.1}
+          onEndReached={loadPage}
+          ListFooterComponent={() => (
+            <>
+              {productsList.loading && (
+                <ActivityIndicator
+                  size="small"
+                  color="#1C9956"
+                  style={{ marginTop: 12 }}
+                />
+              )}
+            </>
+          )}
+        />
+      </Container>
+    </SafeAreaView>
   );
 };
 
