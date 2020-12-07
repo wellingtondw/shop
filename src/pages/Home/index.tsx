@@ -7,18 +7,7 @@ import { CentralizeView, Container } from '../../styles/common';
 
 import * as S from './styles';
 import { ProductItemProps } from '../../components/Product-Item';
-
-const GET_SKUS = gql`
-  query allSkus($page: Int, $perPage: Int) {
-    allSkus(page: $page, perPage: $perPage) {
-      id
-      name
-      imageUrl
-      salePrice
-      promotionalPrice
-    }
-  }
-`;
+import { GET_SKUS } from '../../graphql/queries';
 
 export type ProductListProps = {
   data: ProductItemProps[];
@@ -83,7 +72,12 @@ const Home: React.FC = () => {
         <ActivityIndicator size="large" color="#1C9956" />
       </CentralizeView>
     );
-  if (error) return <Text>{error}</Text>;
+  if (error) {
+    return Alert.alert(
+      'Ocorreu um erro',
+      'Entre em contato com nossa equipe de desenvovimento "teste@hotmail.com"',
+    );
+  }
 
   return (
     <Container>

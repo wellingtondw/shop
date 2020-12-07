@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { RouteProp } from '@react-navigation/native';
 import {
-  Text,
   FlatList,
   ListRenderItem,
   ActivityIndicator,
   Alert,
 } from 'react-native';
+import { ADD_PRODUCT_DETAILS } from '../../graphql/mutations';
+import { GET_SKU } from '../../graphql/queries';
 
 import ProductImage from '../../components/Product-Image';
 import Input from '../../components/Input';
@@ -19,40 +20,6 @@ import ProductSpecification, {
   ProductSpecificationProps,
 } from '../../components/Product-Specification';
 import { CentralizeView, Container } from '../../styles/common';
-
-const GET_SKU = gql`
-  query Sku($id: ID!) {
-    Sku(id: $id) {
-      id
-      name
-      imageUrl
-      salePrice
-      quantity
-      promotionalPrice
-      package
-    }
-  }
-`;
-
-const ADD_PRODUCT_DETAILS = gql`
-  mutation updateSku(
-    $id: ID!
-    $package: JSON
-    $salePrice: Int
-    $promotionalPrice: Int
-    $quantity: Int
-  ) {
-    updateSku(
-      id: $id
-      package: $package
-      salePrice: $salePrice
-      promotionalPrice: $promotionalPrice
-      quantity: $quantity
-    ) {
-      id
-    }
-  }
-`;
 
 export type HandleInputChangeProps = {
   text: string;
