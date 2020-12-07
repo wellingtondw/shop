@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
-import { ActivityIndicator, Text } from 'react-native';
+import { ActivityIndicator, Text, Alert } from 'react-native';
 import ProductList from '../../components/Product-List';
 import { CentralizeView, Container } from '../../styles/common';
 
@@ -45,7 +45,6 @@ const Home: React.FC = () => {
     const currentPage = productsList.page + 1;
 
     if (!productsList.hasNext) return;
-
     setProductsList({
       ...productsList,
       loading: true,
