@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import ProductImage from '../Product-Image';
 
 import * as S from './styles';
+import convertValueIntoRealCurrency from '../../utils/convertValueIntoRealCurrency';
 
 export type ProductItemProps = {
   id: string;
@@ -38,13 +39,15 @@ const ProductItem: React.FC<ProductItemProps> = ({
         <S.Title type="secondary">{name}</S.Title>
         <S.PriceContainer>
           <S.NumberOfInstallments>1 x</S.NumberOfInstallments>
-          <S.PromotionalPrice>
-            R$
-            {promotionalPrice}
-          </S.PromotionalPrice>
+          {promotionalPrice! < salePrice! && (
+            <S.PromotionalPrice>
+              R$
+              {convertValueIntoRealCurrency(Number(promotionalPrice))}
+            </S.PromotionalPrice>
+          )}
           <S.Price>
             R$
-            {salePrice}
+            {convertValueIntoRealCurrency(Number(salePrice))}
           </S.Price>
         </S.PriceContainer>
       </S.Wrapper>

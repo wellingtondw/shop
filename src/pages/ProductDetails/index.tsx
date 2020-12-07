@@ -40,8 +40,8 @@ export type ProductDetailsDataProps = {
   id: number | null;
   name: string;
   imageUrl: string;
-  salePrice: string;
-  promotionalPrice: string;
+  salePrice: number;
+  promotionalPrice: number;
   quantity: number;
   package: {
     width: number;
@@ -68,8 +68,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ route }) => {
     id: null,
     name: '',
     imageUrl: '',
-    salePrice: '0',
-    promotionalPrice: '0',
+    salePrice: 0,
+    promotionalPrice: 0,
     quantity: 0,
     package: {
       width: 0,
