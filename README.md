@@ -12,8 +12,8 @@ Nodis Challenge
 </p>
 
 <div align="center">
-  <img src="https://im7.ezgif.com/tmp/ezgif-7-7ec58b163790.gif" alt="demo-web">
-  <img src="https://im7.ezgif.com/tmp/ezgif-7-739a6eba2222.gif">
+  <img src="https://res.cloudinary.com/dyxcgmvy9/image/upload/v1607392348/gifs/home_jbstmq.gif">
+  <img src="https://res.cloudinary.com/dyxcgmvy9/image/upload/v1607392348/gifs/details_gi0sfh.gif">
 </div>
 
 <hr />
