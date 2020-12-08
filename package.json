@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "database": "json-graphql-server mock/database.js"
+    "database": "json-graphql-server mock/database.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.2.9",
